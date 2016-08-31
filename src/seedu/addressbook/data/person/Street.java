@@ -8,7 +8,7 @@ package seedu.addressbook.data.person;
 public class Street {
     private final String street;
     
-    public static final String STREET_VALIDATION_REGEX = ".+"; // any string
+    private static final String STREET_VALIDATION_REGEX = ".+"; // any string
     
     public Street(String street) {
         super();
