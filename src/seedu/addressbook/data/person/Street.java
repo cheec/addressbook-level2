@@ -36,19 +36,20 @@ public class Street {
     
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Street other = (Street) obj;
-        if (street == null) {
-            if (other.street != null)
-                return false;
-        } else if (!street.equals(other.street))
+        if (this.street == null && other.street != null) {
             return false;
-        return true;
+        }
+        return this.street.equals(other.street);
     }
     
     @Override

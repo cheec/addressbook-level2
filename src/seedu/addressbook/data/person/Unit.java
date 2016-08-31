@@ -37,19 +37,20 @@ public class Unit {
     
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Unit other = (Unit) obj;
-        if (unit == null) {
-            if (other.unit != null)
+        if (unit == null && other.unit != null) {
                 return false;
-        } else if (!unit.equals(other.unit))
-            return false;
-        return true;
+        }
+        return this.unit.equals(other.unit);
     }
     
     @Override
