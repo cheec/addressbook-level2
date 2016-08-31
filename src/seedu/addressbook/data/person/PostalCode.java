@@ -20,7 +20,7 @@ public class PostalCode {
     /**
      * @return the postalCode
      */
-    public int getPostalCode() {
+    public int getPostalCodeNum() {
         return postalCode;
     }
     

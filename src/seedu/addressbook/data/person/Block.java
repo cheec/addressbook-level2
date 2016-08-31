@@ -18,7 +18,7 @@ public class Block {
     /**
      * @return the _block
      */
-    public int getBlock() {
+    public int getBlockNum() {
         return this.block;
     }
     
