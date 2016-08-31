@@ -85,6 +85,21 @@ public class StorageFile {
      */
     public void save(AddressBook addressBook) throws StorageOperationException {
 
+        if (!path.toFile().exists()) {
+            throw new StorageOperationException("File not found: " + path);
+        }
+        createFileAndWrite(addressBook);
+    }
+
+    /**
+     * Writes data to this storage file, if it exists. Else, create the file and
+     * write.
+     * 
+     * @throws StorageOperationException
+     *             if there were errors converting and/or storing data to file.
+     */
+    private void createFileAndWrite(AddressBook addressBook) throws StorageOperationException {
+        
         /* Note: Note the 'try with resource' statement below.
          * More info: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
          */
@@ -128,7 +143,7 @@ public class StorageFile {
         // create empty file if not found
         } catch (FileNotFoundException fnfe) {
             final AddressBook empty = new AddressBook();
-            save(empty);
+            createFileAndWrite(empty);
             return empty;
 
         // other errors
