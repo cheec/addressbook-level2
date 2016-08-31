@@ -8,6 +8,8 @@ package seedu.addressbook.data.person;
 public class Block {
     private final int _block;
     
+    private static final String BLOCK_VALIDATION_REGEX = "\\d+"; // any integer
+    
     public Block(int block) {
         super();
         _block = block;
@@ -20,4 +22,7 @@ public class Block {
         return _block;
     }
     
+    public static boolean isValidBlock(String testBlock) {
+        return testBlock.trim().matches(BLOCK_VALIDATION_REGEX);
+    }
 }
