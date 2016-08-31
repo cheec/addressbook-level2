@@ -8,11 +8,14 @@ import seedu.addressbook.data.exception.IllegalValueException;
  */
 public class Address {
     
-    public static final String EXAMPLE                     = "123, some street";
-    public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses can be in any format";
-    public static final String ADDRESS_VALIDATION_REGEX    = ".+";
+    public static final String EXAMPLE                     = "123, Clementi Ave 3, #12-34, 231534";
+    public static final String MESSAGE_ADDRESS_CONSTRAINTS =
+            "Person addresses must be in the format: BLOCK, STREET, UNIT, POSTAL_CODE";
     
-    public final String value;
+    private final Block      _block;
+    private final Street     _street;
+    private final Unit       _unit;
+    private final PostalCode _postalCode;
     
     private boolean isPrivate;
     
@@ -32,7 +35,19 @@ public class Address {
         if (!isValidAddress(address)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
-        this.value = address;
+        
+        // address string is valid, proceed with instantiating members
+        final String[] splitAddressArgs = address.split(",");
+        
+        final String blockArgs = splitAddressArgs[DATA_ARGS_INDEX_BLOCK].trim();
+        final String unitArgs = splitAddressArgs[DATA_ARGS_INDEX_UNIT].trim();
+        final String streetArgs = splitAddressArgs[DATA_ARGS_INDEX_STREET].trim();
+        final String postalCodeArgs = splitAddressArgs[DATA_ARGS_INDEX_POSTALCODE].trim();
+        
+        _block = new Block(Integer.parseInt(blockArgs));
+        _street = new Street(streetArgs);
+        _unit = new Unit(unitArgs);
+        _postalCode = new PostalCode(Integer.parseInt(postalCodeArgs));
     }
     
     /**
