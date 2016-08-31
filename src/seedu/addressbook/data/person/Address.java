@@ -13,7 +13,13 @@ public class Address {
     public static final String ADDRESS_VALIDATION_REGEX    = ".+";
     
     public final String value;
-    private boolean     isPrivate;
+    
+    private boolean isPrivate;
+    
+    private static final int DATA_ARGS_INDEX_BLOCK      = 0;
+    private static final int DATA_ARGS_INDEX_UNIT       = 1;
+    private static final int DATA_ARGS_INDEX_STREET     = 2;
+    private static final int DATA_ARGS_INDEX_POSTALCODE = 3;
     
     /**
      * Validates given address.
@@ -30,10 +36,34 @@ public class Address {
     }
     
     /**
-     * Returns true if a given string is a valid person email.
+     * Returns true if a given string is a valid person address.
      */
     public static boolean isValidAddress(String test) {
-        return test.matches(ADDRESS_VALIDATION_REGEX);
+        if (!isAddressExtractable(test)) {
+            return false;
+        }
+        
+        // test string is extractable, proceed to extract
+        final String[] splitAddressArgs = test.split(",");
+        
+        final String testBlock = splitAddressArgs[DATA_ARGS_INDEX_BLOCK].trim();
+        final String testUnit = splitAddressArgs[DATA_ARGS_INDEX_UNIT].trim();
+        final String testStreet = splitAddressArgs[DATA_ARGS_INDEX_STREET].trim();
+        final String testPostalCode = splitAddressArgs[DATA_ARGS_INDEX_POSTALCODE].trim();
+        
+        // tests validity of each component of a person's address
+        return Block.isValidBlock(testBlock) && Unit.isValidUnit(testUnit) && Street.isValidStreet(testStreet)
+                && PostalCode.isValidPostalCode(testPostalCode);
+    }
+    
+    /**
+     * Returns true if a given string has extractable address information
+     */
+    private static boolean isAddressExtractable(String test) {
+        final String[] splitArgs = test.trim().split(",", 4);
+        return splitArgs.length == 4 // 4 arguments
+                && !splitArgs[0].isEmpty() // non-empty arguments
+                && !splitArgs[1].isEmpty() && !splitArgs[2].isEmpty() && !splitArgs[3].isEmpty();
     }
     
     @Override
