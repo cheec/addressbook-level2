@@ -8,6 +8,8 @@ package seedu.addressbook.data.person;
 public class Unit {
     private final String unit;
     
+    public static final String UNIT_VALIDATION_REGEX = "(#)(\\d+)(-)(\\d+)";
+    
     public Unit(String unit) {
         super();
         this.unit = unit;
@@ -18,6 +20,10 @@ public class Unit {
      */
     public String getUnit() {
         return unit;
+    }
+    
+    public static boolean isValidUnit(String testUnit) {
+        return testUnit.trim().matches(UNIT_VALIDATION_REGEX);
     }
     
 }
