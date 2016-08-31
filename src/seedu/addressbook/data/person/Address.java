@@ -12,10 +12,10 @@ public class Address {
     public static final String MESSAGE_ADDRESS_CONSTRAINTS =
             "Person addresses must be in the format: BLOCK, STREET, UNIT, POSTAL_CODE";
     
-    private final Block      _block;
-    private final Street     _street;
-    private final Unit       _unit;
-    private final PostalCode _postalCode;
+    private Block      _block;
+    private Street     _street;
+    private Unit       _unit;
+    private PostalCode _postalCode;
     
     public final String value; // stores raw address string
     
@@ -118,4 +118,37 @@ public class Address {
     public boolean isPrivate() {
         return isPrivate;
     }
+    
+    public Block getBlock() {
+        return _block;
+    }
+    
+    public Street getStreet() {
+        return _street;
+    }
+    
+    public Unit getUnit() {
+        return _unit;
+    }
+    
+    public PostalCode getPostalCode() {
+        return _postalCode;
+    }
+    
+    public void setBlock(Block block) {
+        _block = block;
+    }
+    
+    public void setStreet(Street street) {
+        _street = street;
+    }
+    
+    public void setUnit(Unit unit) {
+        _unit = unit;
+    }
+    
+    public void setPostalCode(PostalCode postalCode) {
+        _postalCode = postalCode;
+    }
+    
 }
