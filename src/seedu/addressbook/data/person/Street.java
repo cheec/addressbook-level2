@@ -8,6 +8,8 @@ package seedu.addressbook.data.person;
 public class Street {
     private final String street;
     
+    public static final String STREET_VALIDATION_REGEX = ".+"; // any string
+    
     public Street(String street) {
         super();
         this.street = street;
@@ -18,6 +20,10 @@ public class Street {
      */
     public String getStreet() {
         return street;
+    }
+    
+    public static boolean isValidStreet(String testStreet) {
+        return testStreet.trim().matches(STREET_VALIDATION_REGEX);
     }
     
 }
