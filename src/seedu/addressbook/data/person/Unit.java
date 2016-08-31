@@ -8,7 +8,8 @@ package seedu.addressbook.data.person;
 public class Unit {
     private final String unit;
     
-    public static final String UNIT_VALIDATION_REGEX = "(#)(\\d+)(-)(\\d+)";
+    // valid unit numbers are in the form: #(any no. digits)-(any no. digits)
+    public static final String UNIT_VALIDATION_REGEX = "(#)(\\d+)(-)(\\d+)"; 
     
     public Unit(String unit) {
         super();
