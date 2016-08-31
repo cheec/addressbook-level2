@@ -12,6 +12,9 @@ public class Address {
     public static final String MESSAGE_ADDRESS_CONSTRAINTS =
             "Person addresses must be in the format: BLOCK, STREET, UNIT, POSTAL_CODE";
     
+    // four extractable fields each not containing commas, separated by a comma.
+    private static final String EXTRACTABLE_ADDRESS_REGEX = "([^,]+),([^,]+),([^,]+),([^,]+)";
+    
     private Block      _block;
     private Street     _street;
     private Unit       _unit;
@@ -37,7 +40,7 @@ public class Address {
         }
         
         // address string is valid, proceed with instantiating members
-        final String[] splitAddressArgs = address.split(",");
+        final String[] splitAddressArgs = address.split(",", 4);
         
         final String blockArgs = splitAddressArgs[DATA_ARGS_INDEX_BLOCK].trim();
         final String unitArgs = splitAddressArgs[DATA_ARGS_INDEX_UNIT].trim();
@@ -59,7 +62,7 @@ public class Address {
         }
         
         // test string is extractable, proceed to extract
-        final String[] splitAddressArgs = test.split(",");
+        final String[] splitAddressArgs = test.split(",", 4);
         
         final String testBlock = splitAddressArgs[DATA_ARGS_INDEX_BLOCK].trim();
         final String testUnit = splitAddressArgs[DATA_ARGS_INDEX_UNIT].trim();
@@ -75,10 +78,7 @@ public class Address {
      * Returns true if a given string has extractable address information
      */
     private static boolean isAddressExtractable(String test) {
-        final String[] splitArgs = test.trim().split(",", 4);
-        return splitArgs.length == 4 // 4 arguments
-                && !splitArgs[0].isEmpty() // non-empty arguments
-                && !splitArgs[1].isEmpty() && !splitArgs[2].isEmpty() && !splitArgs[3].isEmpty();
+        return test.trim().matches(EXTRACTABLE_ADDRESS_REGEX);
     }
     
     @Override
