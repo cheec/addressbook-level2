@@ -9,6 +9,9 @@ package seedu.addressbook.data.person;
 public class PostalCode {
     private final int postalCode;
     
+    // any integer
+    private static final String POSTALCODE_VALIDATION_REGEX = "\\d+";
+    
     public PostalCode(int postalCode) {
         super();
         this.postalCode = postalCode;
@@ -19,6 +22,10 @@ public class PostalCode {
      */
     public int getPostalCode() {
         return postalCode;
+    }
+    
+    public static boolean isValidPostalCode(String testPostalCode) {
+        return testPostalCode.trim().matches(POSTALCODE_VALIDATION_REGEX);
     }
     
 }
