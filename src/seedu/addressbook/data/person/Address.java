@@ -17,6 +17,8 @@ public class Address {
     private final Unit       _unit;
     private final PostalCode _postalCode;
     
+    public final String value; // stores raw address string
+    
     private boolean isPrivate;
     
     private static final int DATA_ARGS_INDEX_BLOCK      = 0;
@@ -48,6 +50,8 @@ public class Address {
         _street = new Street(streetArgs);
         _unit = new Unit(unitArgs);
         _postalCode = new PostalCode(Integer.parseInt(postalCodeArgs));
+        
+        value = address;
     }
     
     /**
