@@ -22,8 +22,8 @@ public class Address {
     private boolean isPrivate;
     
     private static final int DATA_ARGS_INDEX_BLOCK      = 0;
-    private static final int DATA_ARGS_INDEX_UNIT       = 1;
-    private static final int DATA_ARGS_INDEX_STREET     = 2;
+    private static final int DATA_ARGS_INDEX_STREET     = 1;
+    private static final int DATA_ARGS_INDEX_UNIT       = 2;
     private static final int DATA_ARGS_INDEX_POSTALCODE = 3;
     
     /**
