@@ -83,20 +83,32 @@ public class Address {
     
     @Override
     public String toString() {
-        return value;
+        return _block + ", " + _street + ", " + _unit + ", " + _postalCode;
     }
     
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof Address // instanceof handles nulls
-                        && this.value.equals(((Address) other).value)); // state
-                                                                        // check
+        if (other == this) {
+            return true;
+        }
+        if (other instanceof Address) {
+            Address o = (Address) other;
+            return o._block.equals(this._block) && o._street.equals(this._street) && o._unit.equals(this._unit)
+                    && o._postalCode.equals(this._postalCode);
+        }
+        
+        return false;
     }
     
     @Override
     public int hashCode() {
-        return value.hashCode();
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((_block == null) ? 0 : _block.hashCode());
+        result = prime * result + ((_postalCode == null) ? 0 : _postalCode.hashCode());
+        result = prime * result + ((_street == null) ? 0 : _street.hashCode());
+        result = prime * result + ((_unit == null) ? 0 : _unit.hashCode());
+        return result;
     }
     
     public boolean isPrivate() {
