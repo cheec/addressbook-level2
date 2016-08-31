@@ -26,4 +26,9 @@ public class Street {
         return testStreet.trim().matches(STREET_VALIDATION_REGEX);
     }
     
+    @Override
+    public String toString() {
+        return street;
+    }
+    
 }

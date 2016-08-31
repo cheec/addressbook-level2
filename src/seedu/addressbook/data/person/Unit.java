@@ -9,7 +9,7 @@ public class Unit {
     private final String unit;
     
     // valid unit numbers are in the form: #(any no. digits)-(any no. digits)
-    private static final String UNIT_VALIDATION_REGEX = "(#)(\\d+)(-)(\\d+)"; 
+    private static final String UNIT_VALIDATION_REGEX = "(#)(\\d+)(-)(\\d+)";
     
     public Unit(String unit) {
         super();
@@ -25,6 +25,11 @@ public class Unit {
     
     public static boolean isValidUnit(String testUnit) {
         return testUnit.trim().matches(UNIT_VALIDATION_REGEX);
+    }
+    
+    @Override
+    public String toString() {
+        return this.unit;
     }
     
 }

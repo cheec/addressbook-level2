@@ -6,23 +6,28 @@ package seedu.addressbook.data.person;
  * @author Clarence
  */
 public class Block {
-    private final int _block;
+    private final int block;
     
     private static final String BLOCK_VALIDATION_REGEX = "\\d+"; // any integer
     
     public Block(int block) {
         super();
-        _block = block;
+        this.block = block;
     }
     
     /**
      * @return the _block
      */
     public int getBlock() {
-        return _block;
+        return this.block;
     }
     
     public static boolean isValidBlock(String testBlock) {
         return testBlock.trim().matches(BLOCK_VALIDATION_REGEX);
+    }
+
+    @Override
+    public String toString() {
+        return "" + this.block;
     }
 }

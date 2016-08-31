@@ -28,4 +28,9 @@ public class PostalCode {
         return testPostalCode.trim().matches(POSTALCODE_VALIDATION_REGEX);
     }
     
+    @Override
+    public String toString() {
+        return "" + this.postalCode;
+    }
+    
 }
