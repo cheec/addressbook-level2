@@ -9,6 +9,7 @@ import seedu.addressbook.parser.Parser;
 import seedu.addressbook.storage.StorageFile;
 import seedu.addressbook.ui.TextUi;
 
+import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -83,9 +84,10 @@ public class Main {
             String userCommandText = ui.getUserCommand();
             command = new Parser().parseCommand(userCommandText);
             CommandResult result = executeCommand(command);
-            recordResult(result);
-            ui.showResultToUser(result);
-
+            if (result != null) {
+                recordResult(result);
+                ui.showResultToUser(result);
+            }
         } while (!ExitCommand.isExit(command));
     }
 
@@ -100,14 +102,20 @@ public class Main {
     /**
      * Executes the command and returns the result.
      * 
-     * @param command user command
-     * @return result of the command
+     * @param command
+     *            user command
+     * @return result of the command. Null if exception during command
+     *         execution.
      */
-    private CommandResult executeCommand(Command command)  {
+    private CommandResult executeCommand(Command command) {
+        CommandResult result = null;
         try {
             command.setData(addressBook, lastShownList);
-            CommandResult result = command.execute();
+            result = command.execute();
             storage.save(addressBook);
+            return result;
+        } catch (FileNotFoundException fnfe) {
+            ui.showToUserErrorMsg(fnfe.getMessage());
             return result;
         } catch (Exception e) {
             ui.showToUser(e.getMessage());

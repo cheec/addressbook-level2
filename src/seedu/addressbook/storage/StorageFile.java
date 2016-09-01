@@ -79,18 +79,22 @@ public class StorageFile {
     }
 
     /**
-     * Saves all data to this storage file.
-     *
-     * @throws StorageOperationException if there were errors converting and/or storing data to file.
+     * Saves all data to this storage file. If storage file was deleted, it will
+     * create the file and notify user.
+     * 
+     * @throws StorageOperationException
+     *             if there were errors converting and/or storing data to file.
+     * @throws FileNotFoundException
+     *             if file does not exist in set path.
      */
-    public void save(AddressBook addressBook) throws StorageOperationException {
-
-        if (!path.toFile().exists()) {
-            throw new StorageOperationException("File not found: " + path);
-        }
+    public void save(AddressBook addressBook) throws StorageOperationException, FileNotFoundException {
+        final boolean fileExists = path.toFile().exists();
         createFileAndWrite(addressBook);
+        if (!fileExists) {
+            throw new FileNotFoundException("Storage file not found, file created: " + path);
+        }
     }
-
+    
     /**
      * Writes data to this storage file, if it exists. Else, create the file and
      * write.

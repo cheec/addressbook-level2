@@ -166,4 +166,14 @@ public class TextUi {
         return String.format(MESSAGE_INDEXED_LIST_ITEM, visibleIndex, listItem);
     }
 
+    /**
+     * Shows error message to user.
+     * 
+     * @param message
+     *            error message to show
+     */
+    public void showToUserErrorMsg(String message) {
+        showToUser(DIVIDER, message, DIVIDER);
+    }
+
 }
