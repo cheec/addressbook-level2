@@ -113,14 +113,13 @@ public class Main {
             command.setData(addressBook, lastShownList);
             result = command.execute();
             storage.save(addressBook);
-            return result;
         } catch (FileNotFoundException fnfe) {
             ui.showToUserErrorMsg(fnfe.getMessage());
-            return result;
         } catch (Exception e) {
             ui.showToUser(e.getMessage());
             throw new RuntimeException(e);
         }
+        return result;
     }
 
     /**
