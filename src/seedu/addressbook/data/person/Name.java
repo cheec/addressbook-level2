@@ -76,6 +76,6 @@ public class Name {
         final List<String> thisNameSplit = Arrays.asList(thisName.split("[, ]"));
         final List<String> otherNameSplit = Arrays.asList(otherName.split("[, ]"));
         
-        return otherNameSplit.containsAll(thisNameSplit);
+        return otherNameSplit.containsAll(thisNameSplit) || thisNameSplit.containsAll(otherNameSplit);
     }
 }
