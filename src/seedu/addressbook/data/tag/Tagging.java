@@ -56,7 +56,9 @@ public class Tagging {
      */
     private static String getFormattedTaggingMessage(Tagging t) {
         final String prefix = t.isLive ? ADDED_PREFIX : DELETED_PREFIX;
-        return String.format(MESSAGE_TAGGING_CHANGES, prefix, t.getPerson().getName(), t.getTag());
+        final String personName = t.getPerson().getName().toString();
+        final String tagToPrint = t.getTag().toString();
+        return String.format(MESSAGE_TAGGING_CHANGES, prefix, personName, tagToPrint);
     }
     
     public Person getPerson() {
