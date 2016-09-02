@@ -70,6 +70,6 @@ public class Name {
      * </ul>
      */
     public boolean isSimilar(Name other) {
-        return false;
+        return this.equals(other);
     }
 }
