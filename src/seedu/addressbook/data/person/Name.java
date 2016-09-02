@@ -70,6 +70,10 @@ public class Name {
      * </ul>
      */
     public boolean isSimilar(Name other) {
+        if (other == null) {
+            return false;
+        }
+        
         final String thisName = this.toString().toLowerCase();
         final String otherName = other.toString().toLowerCase();
         
