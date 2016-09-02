@@ -33,8 +33,15 @@ public class SimilarNameTest {
     
     @Test
     public void isSimilar_thisSubsetOfOther() throws IllegalValueException {
-        n1 = new Name("b");
-        n2 = new Name("b b");
+        n1 = new Name("jon");
+        n2 = new Name("jon smith");
+        assertTrue(n1.isSimilar(n2));
+    }
+    
+    @Test
+    public void isSimilar_otherSubsetOfThis() throws IllegalValueException {
+        n1 = new Name("jon smith");
+        n2 = new Name("jon");
         assertTrue(n1.isSimilar(n2));
     }
 }
