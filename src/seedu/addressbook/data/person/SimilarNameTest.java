@@ -17,10 +17,17 @@ public class SimilarNameTest {
         assertFalse(n1.isSimilar(n2));
     }
     
-    @Test public void isSimilar_sameNames() throws IllegalValueException {
+    @Test 
+    public void isSimilar_sameNames() throws IllegalValueException {
         n1 = new Name("bob");
         n2 = new Name("bob");
         assertTrue(n1.isSimilar(n2));
     }
     
+    @Test
+    public void isSimilar_caseInsensitive() throws IllegalValueException {
+        n1 = new Name("B");
+        n2 = new Name("b");
+        assertTrue(n1.isSimilar(n2));
+    }
 }
