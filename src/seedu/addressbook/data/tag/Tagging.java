@@ -32,14 +32,23 @@ public class Tagging {
         if (t == null) {
             return;
         }
-        Tagging deletedTagging = new Tagging(t.person, t.tag);
-        deletedTagging.isLive = false;
-        ALL_TAGGING_CHANGES.add(deletedTagging);
+        recordDeletion(t);
         
         // Assume there are commands to add and remove tags to a person in the
         // address book. Commands to remove tags would be executed here.
     }
     
+    /**
+     * Creates a copy of the deleted tagging and records changes
+     */
+    private static void recordDeletion(Tagging t) {
+        // create copy and record in all changes
+        final Tagging deleted = new Tagging(t.person, t.tag);
+        final int exactIdx = ALL_TAGGING_CHANGES.indexOf(deleted);
+        // flag copy as deleted
+        ALL_TAGGING_CHANGES.get(exactIdx).isLive = false;
+    }
+
     /**
      * Constructs printable list of tagging changes.
      * 
