@@ -17,7 +17,7 @@ public class SimilarNameTest {
         assertFalse(n1.isSimilar(n2));
     }
     
-    @Test 
+    @Test
     public void isSimilar_sameNames() throws IllegalValueException {
         n1 = new Name("bob");
         n2 = new Name("bob");

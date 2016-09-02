@@ -77,9 +77,9 @@ public class Name {
         final String thisName = this.toString().toLowerCase();
         final String otherName = other.toString().toLowerCase();
         
-        final List<String> thisNameSplit = Arrays.asList(thisName.split(" "));
-        final List<String> otherNameSplit = Arrays.asList(otherName.split(" "));
+        final List<String> wordsInThisName = Arrays.asList(thisName.split(" "));
+        final List<String> wordsInOtherName = Arrays.asList(otherName.split(" "));
         
-        return otherNameSplit.containsAll(thisNameSplit) || thisNameSplit.containsAll(otherNameSplit);
+        return wordsInOtherName.containsAll(wordsInThisName) || wordsInThisName.containsAll(wordsInOtherName);
     }
 }
