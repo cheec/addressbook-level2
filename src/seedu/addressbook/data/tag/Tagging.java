@@ -23,6 +23,9 @@ public class Tagging {
         this.person = person;
         isLive = true;
         ALL_TAGGING_CHANGES.add(this);
+        
+        // Assume there are commands to add and remove tags to a person in the
+        // address book. Commands to add tags would be executed here.
     }
     
     public static void deleteTagging(Tagging t) {
@@ -34,7 +37,7 @@ public class Tagging {
         ALL_TAGGING_CHANGES.add(deletedTagging);
         
         // Assume there are commands to add and remove tags to a person in the
-        // address book. They would be executed here.
+        // address book. Commands to remove tags would be executed here.
     }
     
     /**
