@@ -30,4 +30,11 @@ public class SimilarNameTest {
         n2 = new Name("b");
         assertTrue(n1.isSimilar(n2));
     }
+    
+    @Test
+    public void isSimilar_thisSubsetOfOther() throws IllegalValueException {
+        n1 = new Name("b");
+        n2 = new Name("b b");
+        assertTrue(n1.isSimilar(n2));
+    }
 }
