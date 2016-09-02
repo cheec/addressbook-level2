@@ -73,8 +73,8 @@ public class Name {
         final String thisName = this.toString().toLowerCase();
         final String otherName = other.toString().toLowerCase();
         
-        final List<String> thisNameSplit = Arrays.asList(thisName.split("[, ]"));
-        final List<String> otherNameSplit = Arrays.asList(otherName.split("[, ]"));
+        final List<String> thisNameSplit = Arrays.asList(thisName.split(" "));
+        final List<String> otherNameSplit = Arrays.asList(otherName.split(" "));
         
         return otherNameSplit.containsAll(thisNameSplit) || thisNameSplit.containsAll(otherNameSplit);
     }
