@@ -44,4 +44,10 @@ public class SimilarNameTest {
         n2 = new Name("jon");
         assertTrue(n1.isSimilar(n2));
     }
+    
+    @Test
+    public void isSimilar_otherIsNull() throws IllegalValueException {
+        n1 = new Name("jon smith");
+        assertFalse(n1.isSimilar(null));
+    }
 }
