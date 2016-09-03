@@ -57,4 +57,11 @@ public class SimilarNameTest {
         n2 = new Name("jon bob");
         assertFalse(n1.isSimilar(n2));
     }
+    
+    @Test
+    public void isSimilar_differentOrder() throws IllegalValueException {
+        n1 = new Name("beep boop");
+        n2 = new Name("boop beep");
+        assertTrue(n1.isSimilar(n2));
+    }
 }
