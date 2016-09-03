@@ -62,7 +62,7 @@ public class Name {
     }
     
     /**
-     * Returns true of the other name is very similar to this name.
+     * Returns true if the other name is very similar to this name.
      * Two names are considered similar if:
      * <ul>
      * <li>One name is a case-insensitive subset/superset of the other and vice versa.</li>
