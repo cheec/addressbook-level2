@@ -14,6 +14,8 @@ public class Tagging {
     private final static String MESSAGE_TAGGING_CHANGES = "%1$s %2$s %3$s";
     private final static String EXAMPLE_TAGGING_CHANGE  = "+ Jake Woo [friend]";
     
+    private final static String LS = System.lineSeparator();
+    
     private final Tag    tag;
     private final Person person;
     private boolean      isLive; // whether tagging is live or deleted
@@ -57,7 +59,7 @@ public class Tagging {
     public static String getPrintableListOfTaggingChanges() {
         final StringBuilder printableList = new StringBuilder();
         for (Tagging t : ALL_TAGGING_CHANGES) {
-            printableList.append(getFormattedTaggingMessage(t));
+            printableList.append(getFormattedTaggingMessage(t)).append(LS);
         }
         return printableList.toString();
     }
