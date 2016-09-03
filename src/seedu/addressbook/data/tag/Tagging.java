@@ -20,6 +20,10 @@ public class Tagging {
     private final Person person;
     private boolean      isLive; // whether tagging is live or deleted
     
+    /**
+     * Creates a tagging object and records this creation in
+     * {@link #ALL_TAGGING_CHANGES}
+     */
     public Tagging(Person person, Tag tag) {
         this.tag = tag;
         this.person = person;
@@ -46,11 +50,10 @@ public class Tagging {
     private static void recordDeletion(Tagging t) {
         // create copy and record in all changes
         final Tagging deleted = new Tagging(t.person, t.tag);
-        final int exactIdx = ALL_TAGGING_CHANGES.indexOf(deleted);
         // flag copy as deleted
-        ALL_TAGGING_CHANGES.get(exactIdx).isLive = false;
+        deleted.isLive = false;
     }
-
+    
     /**
      * Constructs printable list of tagging changes.
      * 
