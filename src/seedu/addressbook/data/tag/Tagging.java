@@ -11,7 +11,7 @@ public class Tagging {
     private final static String ADDED_PREFIX   = "+";
     private final static String DELETED_PREFIX = "-";
     
-    private final static String MESSAGE_TAGGING_CHANGES = "%1$s %2$s %3$s" + System.lineSeparator();
+    private final static String MESSAGE_TAGGING_CHANGES = "%1$s %2$s %3$s";
     private final static String EXAMPLE_TAGGING_CHANGE  = "+ Jake Woo [friend]";
     
     private final Tag    tag;
