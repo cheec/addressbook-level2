@@ -50,4 +50,11 @@ public class SimilarNameTest {
         n1 = new Name("jon smith");
         assertFalse(n1.isSimilar(null));
     }
+    
+    @Test
+    public void isSimilar_notSubset() throws IllegalValueException {
+        n1 = new Name("jon sam");
+        n2 = new Name("jon bob");
+        assertFalse(n1.isSimilar(n2));
+    }
 }
